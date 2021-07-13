@@ -1,0 +1,52 @@
+.add {
+    margin-top: 1rem;
+    display: grid;
+    place-items: center;
+}
+
+.add__input {
+    border: solid lightblue 2px;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 1rem;
+}
+
+.add__stateValue {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-size: 35px;
+}
+
+.add__dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.add__dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.add__dropdown:hover .add__dropdownContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.add__button > button {
+    margin-top: 1rem;
+    background-color: #0275d8;
+}
+
+.add__button > button > .MuiButton-label {
+    color: white;
+}
+
+.add__button > button:hover {
+    background: #057c9b;
+}

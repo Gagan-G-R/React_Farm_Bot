@@ -1,0 +1,39 @@
+.table {
+    display: grid;
+    place-items: center;
+    margin-top: 1rem;
+    font-size: 50px;
+}
+
+.table__buttonsContainer {
+    display: flex;
+    justify-content: space-evenly;
+    width: 30%;
+}
+
+.table__tableData {
+    margin: 1rem 0;
+}
+
+.table__header {
+    display: flex;
+    background: black;
+    color: white;
+    width: 80vw;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+.table__header > p {
+    font-size: 20px;
+}
+
+.table__button {
+    display: flex;
+    border-radius: 5px;
+    background-color: #5cb85c;
+}
+
+.table__buttonText > .MuiButton-label {
+    color: white;
+}
