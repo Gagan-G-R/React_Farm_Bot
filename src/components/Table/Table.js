@@ -16,7 +16,7 @@ const Table = () => {
             id:doc.id,
             data:doc.data()
         }))))
-    }, [])
+    }, [type])
 
     const handleBackClick = (e) => {
         e.preventDefault()
