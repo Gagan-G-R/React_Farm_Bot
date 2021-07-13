@@ -1,16 +1,29 @@
 import './Table.css'
 import { useParams, useHistory } from 'react-router-dom'
 import { Button } from '@material-ui/core'
+import { useState, useEffect } from 'react'
+import { db } from '../../firebase'
+import TableRow from '../TableRow/TableRow'
+
 
 const Table = () => {
     const { type } = useParams()
-
+    const [snapshot, setSnapshot]=useState([])
     const history = useHistory()
+
+    useEffect(()=>{
+        db.collection(type).orderBy('time','asc').onSnapshot((snapshot)=>setSnapshot(snapshot.docs.map((doc)=>({
+            id:doc.id,
+            data:doc.data()
+        }))))
+    }, [])
 
     const handleBackClick = (e) => {
         e.preventDefault()
         history.push('/')
     }
+
+
 
     const handleAddClick = (e) => {
         e.preventDefault()
@@ -22,18 +35,25 @@ const Table = () => {
             <p>Here are all the {type}</p>
 
             <div className="table__tableData">
-                <div className="table__header">
-                    <p>#</p>
-                    <p>time</p>
-                    <p>x</p>
-                    <p>y</p>
-                    <p>option</p>
-                </div>
-                <table></table>
+                
+                <table>
+                    <tr style={{backgroundColor:'black',color:"white",fontWeight:'200',textAlign:'center'}}>
+                        <th>#</th>
+                        <th>time</th>
+                        <th>x</th>
+                        <th>y</th>
+                        <th>option</th>
+                    </tr>
+                    {
+                        snapshot.map((plant, index)=>(
+                            <TableRow plant={plant} index={index} type={type}/>
+                        ))
+                    }
+                </table>
             </div>
 
             <div className="table__buttonsContainer">
-                <div className="table__addButton table__button">
+                <div className="table__addButton table__button class_border_add">
                     <Button
                         onClick={handleAddClick}
                         className="table__buttonText"
@@ -42,8 +62,8 @@ const Table = () => {
                     </Button>
                 </div>
 
-                <div className="table__backButton table__button">
-                    <Button
+                <div className="table__backButton table__button class_border_add ">
+                    <Button 
                         className="table__buttonText"
                         onClick={handleBackClick}
                     >

@@ -3,9 +3,11 @@ import { Button } from '@material-ui/core'
 import { useState } from 'react'
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 import { useHistory } from 'react-router-dom'
+import {db} from '../../firebase'
+import firebase from 'firebase'
 
 const Add = () => {
-    const [state, setState] = useState('')
+    const [state, setState] = useState('crops')
     const [xCoord, setXCoord] = useState('')
     const [yCoord, setYCoord] = useState('')
 
@@ -13,11 +15,17 @@ const Add = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        db.collection(state).add({
+            x:xCoord,
+            y:yCoord,
+            time:firebase.firestore.FieldValue.serverTimestamp()
+        })
         history.push('/')
     }
 
     return (
         <div className="add">
+            <div className="coo">
             <div className="add__dropdown">
                 <div className="add__input">
                     <input readOnly className="add__stateValue" value={state} />
@@ -26,14 +34,14 @@ const Add = () => {
                 <div className="add__dropdownContent">
                     <Button
                         onClick={() => {
-                            setState('Crops')
+                            setState('crops')
                         }}
                     >
                         Crops
                     </Button>
                     <Button
                         onClick={() => {
-                            setState('Weeds')
+                            setState('weeds')
                         }}
                     >
                         Weeds
@@ -41,6 +49,8 @@ const Add = () => {
                 </div>
             </div>
 
+
+            
             <div className="add__input">
                 <input
                     className="add__stateValue"
@@ -60,11 +70,12 @@ const Add = () => {
                     onChange={(e) => setYCoord(e.target.value)}
                 />
             </div>
-
+            </div>
             <div className="add__button">
                 <Button onClick={handleSubmit}>Submit</Button>
             </div>
         </div>
+
     )
 }
 

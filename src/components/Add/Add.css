@@ -50,3 +50,7 @@
 .add__button > button:hover {
     background: #057c9b;
 }
+
+.coo{
+    display: flex;
+}

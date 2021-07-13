@@ -31,9 +31,46 @@
 .table__button {
     display: flex;
     border-radius: 5px;
-    background-color: #5cb85c;
 }
 
 .table__buttonText > .MuiButton-label {
-    color: white;
+    color: rgb(5, 5, 5);
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: center;
+    font-size: 2.5rem;
+  }
+  tr{
+    border: 2px solid #020202;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  tr:nth-child(odd  ) {
+    background-color: #dddddd;
+  }
+
+  .class_border button{
+      border:2px solid red;
+  }
+  .class_border:hover button{
+    background-color: rgba(255,0,0,0.5);
+  }
+
+    .class_border_add button{
+        border:2px solid green;
+    }
+    .class_border_add:hover button{
+      background-color: rgba(0,255,0,0.5);
+
 }
