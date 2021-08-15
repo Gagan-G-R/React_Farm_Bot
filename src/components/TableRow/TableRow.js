@@ -9,7 +9,7 @@ const TableRow = ({plant,index,type}) => {
     return (
         <tr>
             <td>{index + 1}</td>
-            <td><img src={plant.data.url} width="200" height="200" ></img></td>
+            <td><img src={plant.data.url} width="200" height="200" alt=""></img></td>
             <td>{plant.data.gno}</td>
             <td>{plant.data.time}</td>
             <td>{plant.data.x}</td>
