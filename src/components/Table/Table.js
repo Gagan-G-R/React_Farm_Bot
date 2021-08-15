@@ -40,7 +40,7 @@ const Table = () => {
                     <tr style={{backgroundColor:'black',color:"white",fontWeight:'200',textAlign:'center'}}>
                         <th>#</th>
                         <th>Image</th>
-                        <th>Grind No</th>
+                        <th>Grid No</th>
                         <th>time</th>
                         <th>x</th>
                         <th>y</th>
