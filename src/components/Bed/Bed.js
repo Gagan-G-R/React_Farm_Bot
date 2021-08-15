@@ -3,7 +3,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import { Button } from '@material-ui/core'
 import { useState, useEffect } from 'react'
 import { db } from '../../firebase'
-import TableRow from '../TableRow/TableRow'
+// import TableRow from '../TableRow/TableRow'
 
 
 const Bed = () => {
@@ -30,7 +30,7 @@ const Bed = () => {
             <div className="table__tableData">
                     {
                         snapshot.map((plant, index)=>(
-                            <img src={plant.data.link} width="200" height="200" ></img>
+                            <img src={plant.data.link} width="200" height="200" alt="" ></img>
                         ))
                     }
             </div>
