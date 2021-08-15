@@ -9,7 +9,9 @@ const TableRow = ({plant,index,type}) => {
     return (
         <tr>
             <td>{index + 1}</td>
-            <td>{new Date(plant.data.time.toDate()).toUTCString()}</td>
+            <td><img src={plant.data.url} width="200" height="200" ></img></td>
+            <td>{plant.data.gno}</td>
+            <td>{plant.data.time}</td>
             <td>{plant.data.x}</td>
             <td>{plant.data.y}</td>
             <td><div class="class_border"><Button className="del_but" onClick={handleDelClick}>delete</Button></div></td>

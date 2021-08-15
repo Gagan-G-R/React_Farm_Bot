@@ -15,9 +15,17 @@ const Home = () => {
         history.push('/weeds')
     }
 
+    const handleDetectButtonClick = (e) => {
+        e.preventDefault()
+        history.push('/farm/detect')
+    }
+
     return (
         <div className="home">
             <p className="home__header">Farm Bot</p>
+            
+            
+
             <div className="home__buttonContainer">
                 <div className="home__cropsButton">
                     <Button
@@ -36,6 +44,16 @@ const Home = () => {
                         Weeds
                     </Button>
                 </div>
+
+                <div className="home__detectButton">
+                    <Button
+                        className="home__button"
+                        onClick={handleDetectButtonClick}
+                    >
+                        Detect
+                    </Button>
+                </div>
+
             </div>
         </div>
     )
