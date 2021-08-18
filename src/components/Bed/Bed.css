@@ -1,4 +1,11 @@
 .table__tableData{
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: auto auto;
+    border: 10px solid rgb(182,114,51);
 }
+.heading{
+    color:whitesmoke;
+    font-size: 100px;
+    /* background-color: rgba(0,0,0,0.2); */
+    /* border: 2px solid white; */
+  }

@@ -27,28 +27,28 @@ const Home = () => {
             
 
             <div className="home__buttonContainer">
-                <div className="home__cropsButton">
+                <div className="home__cropsButton"onClick={handleCropsButtonClick}>
                     <Button
-                        className="home__button"
-                        onClick={handleCropsButtonClick}
+                        className="home__button button"
+                        
                     >
                         Crops
                     </Button>
                 </div>
 
-                <div className="home__weedsButton">
+                <div className="home__weedsButton"onClick={handleWeedsButtonClick}>
                     <Button
-                        className="home__button"
-                        onClick={handleWeedsButtonClick}
+                        className="home__button button"
+                        
                     >
                         Weeds
                     </Button>
                 </div>
 
-                <div className="home__detectButton">
+                <div className="home__detectButton"onClick={handleDetectButtonClick}>
                     <Button
                         className="home__button"
-                        onClick={handleDetectButtonClick}
+                        
                     >
                         Detect
                     </Button>

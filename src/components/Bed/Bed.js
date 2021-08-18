@@ -25,7 +25,7 @@ const Bed = () => {
 
     return (
         <div className="table">
-            <p>Here is the farm bed</p>
+            <p class="heading">Here is the farm bed</p>
 
             <div className="table__tableData">
                     {
@@ -44,6 +44,16 @@ const Bed = () => {
                     >
                         Back
                     </Button>
+                    
+                </div>
+                <div className="table__backButton table__button class_border_back ">
+                    <Button 
+                        className="table__buttonText"
+                        onClick={handleBackClick}
+                    >
+                        Restart
+                    </Button>
+                    
                 </div>
             </div>
         </div>

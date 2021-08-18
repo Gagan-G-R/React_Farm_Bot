@@ -32,7 +32,7 @@ const Table = () => {
 
     return (
         <div className="table">
-            <p>Here are all the {type}</p>
+            <p className= "heading" >Here are all the {type}</p>
 
             <div className="table__tableData">
                 
@@ -41,10 +41,10 @@ const Table = () => {
                         <th>#</th>
                         <th>Image</th>
                         <th>Grid No</th>
-                        <th>time</th>
-                        <th>x</th>
-                        <th>y</th>
-                        <th>option</th>
+                        <th>Time</th>
+                        <th>X-co (cm)</th>
+                        <th>y-co (cm)</th>
+                        <th>Option</th>
                     </tr>
                     {
                         snapshot.map((plant, index)=>(
@@ -64,7 +64,7 @@ const Table = () => {
                     </Button>
                 </div>
 
-                <div className="table__backButton table__button class_border_add ">
+                <div className="table__backButton table__button class_border_back ">
                     <Button 
                         className="table__buttonText"
                         onClick={handleBackClick}

@@ -14,7 +14,14 @@ const TableRow = ({plant,index,type}) => {
             <td>{plant.data.time}</td>
             <td>{plant.data.x}</td>
             <td>{plant.data.y}</td>
-            <td><div class="class_border"><Button className="del_but" onClick={handleDelClick}>delete</Button></div></td>
+            <td>
+
+                <div class="class_border_del"><Button className="del_but" onClick={handleDelClick}>Delete</Button></div>
+                <div class="class_border_wat"><Button className="del_but" >Water</Button></div>
+                <div class="class_border_mst"><Button className="del_but" >Moisture</Button></div>
+                <div class="class_border_wed"><Button className="del_but" >Weed</Button></div>
+
+            </td>
         </tr>
     )
 }

@@ -1,3 +1,10 @@
+.heading{
+  color:whitesmoke;
+  font-size: 100px;
+  /* background-color: rgba(0,0,0,0.2); */
+  /* border: 2px solid white; */
+}
+
 .table {
     display: grid;
     place-items: center;
@@ -26,51 +33,105 @@
 
 .table__header > p {
     font-size: 20px;
+   
 }
 
-.table__button {
-    display: flex;
-    border-radius: 5px;
+.table__buttonsContainer > .table__button button {
+    /* display: flex; */
+    /* border-radius: 50%; */
+    margin : auto auto;
+    border: 2px solid white;
+    width:200px;
+    
 }
 
 .table__buttonText > .MuiButton-label {
-    color: rgb(5, 5, 5);
+    color: black;
+    /* padding:10px; */
+    /* background-color: yellowgreen; */
 }
 
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-  }
+}
   
-  td, th {
-    border: 1px solid #dddddd;
-    padding: 8px;
-    text-align: center;
-    font-size: 2.5rem;
-  }
-  tr{
-    border: 2px solid #020202;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
-  tr:nth-child(odd  ) {
-    background-color: #dddddd;
-  }
+td, th {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: center;
+  font-size: 2.5rem;
+}
+tr{
+  border: 2px solid #020202;
+}
 
-  .class_border button{
-      border:2px solid red;
-  }
-  .class_border:hover button{
-    background-color: rgba(255,0,0,0.5);
-  }
+tr:nth-child(even) {
+  background-color: rgba(222, 222, 222,1);
+}
+tr:nth-child(odd  ) {
+  background-color: rgb(222,222,222,1);
+}
 
-    .class_border_add button{
-        border:2px solid green;
-    }
-    .class_border_add:hover button{
-      background-color: rgba(0,255,0,0.5);
+.class_border_del button{
+    border:2px solid red;
+    width:200px;
+}
+.class_border_del:hover button{
+  background-color: rgba(255,0,0,0.5);
+  border:2px solid black;
+}
+
+.class_border_wat button{
+  border:2px solid rgba(4,120,254,1);
+  width:200px;
+}
+.class_border_wat:hover button{
+background-color: rgba(4,120,254,255);
+border:2px solid black;
+}
+
+.class_border_mst button{
+  border:2px solid rgba(25,163,177,255) ;
+  width:200px;
+}
+.class_border_mst:hover button{
+background-color: rgba(25,163,177,255);
+border:2px solid black;
+}
+
+.class_border_wed button{
+  border:2px solid rgba(166,121,49,255)  ;
+  width:200px;
+}
+.class_border_wed:hover button{
+background-color: rgba(255,199,5,1);
+border:2px solid black;
+}
+
+.class_border_add button{
+    border:2px solid whitesmoke;
+    background-color: rgba(92, 184, 92,1);
+    /* padding: 50%; */
+}
+.class_border_add:hover button{
+  background-color: rgba(92, 184, 92,0.5);
 
 }
+
+.class_border_back button{
+  border:2px solid whitesmoke;
+  background-color: rgba(220,53,68,1)
+  ;
+  /* padding: 50%; */
+}
+.class_border_back:hover button{
+background-color: rgba(220,53,68,0.5);
+}
+.table__buttonText > .MuiButton-label:hover {
+  color:whitesmoke;
+  /* font-size: 20px; */
+  
+}
+
