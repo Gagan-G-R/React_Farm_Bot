@@ -23,10 +23,10 @@ const TableRow = ({plant,index,type}) => {
                         console.log(doc.data())
                         var x = String(doc.data().x);
                         var y = String(doc.data().y);
-                        if (x.length==1){
+                        if (x.length===1){
                             x="0"+x;
                         };
-                        if (y.lenght==1){
+                        if (y.lenght===1){
                             y="0"+y;
                         };
                         str1="MV00X"+x+"Y"+y+"Z00Q00";
