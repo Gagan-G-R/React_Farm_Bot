@@ -22,7 +22,11 @@ const Bed = () => {
         e.preventDefault()
         history.push('/')
     }
-
+    const handleDetectClick = (e) => {
+        e.preventDefault()
+        var docRef = db.collection("Status").doc("Detect");
+        docRef.update({state: true});
+    }
     return (
         <div className="table">
             <p class="heading">Here is the farm bed</p>
@@ -49,7 +53,7 @@ const Bed = () => {
                 <div className="table__backButton table__button class_border_back ">
                     <Button 
                         className="table__buttonText"
-                        onClick={handleBackClick}
+                        onClick={handleDetectClick}
                     >
                         Restart
                     </Button>
