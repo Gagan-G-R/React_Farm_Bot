@@ -13,6 +13,7 @@ const TableRow = ({plant,index,type}) => {
 
     const handleWatClick = (e) => {
         e.preventDefault()
+        console.log("happy");
         var docRef = db.collection("Status").doc("Detect");
         docRef.get().then((doc) => {
             if (doc.exists) {
@@ -56,12 +57,55 @@ const TableRow = ({plant,index,type}) => {
         });
     }
 
-
-
     const handleMstClick = (e) => {
         e.preventDefault()
-        
+        console.log("happy");
+        var docRef = db.collection("Status").doc("Detect");
+        docRef.get().then((doc) => {
+            if (doc.exists) {
+                if(!doc.data().state){
+
+                    var str1,str2="MS05X00Y00Z00Q00";
+                    db.collection(type).doc(plant.id).get().then((doc)=>{
+                        console.log(doc.data())
+                        var x = String(doc.data().x);
+                        var y = String(doc.data().y);
+                        if (x.length===1){
+                            x="0"+x;
+                        };
+                        if (y.lenght===1){
+                            y="0"+y;
+                        };
+                        str1="MV00X"+x+"Y"+y+"Z00Q00";
+                        console.log(str1);
+
+
+                        // var time = firebase.firestore.FieldValue.serverTimestamp();
+                        // db.collection("cmds").doc(time).add({"cmd":String(str1)});
+                        // time = firebase.firestore.FieldValue.serverTimestamp();
+                        // db.collection("cmds").doc(time).add({"cmd":String(str2)});
+                        db.collection("cmds").add({
+                            "cmd1":String(str1),
+                            "cmd2":String(str2),
+                            "time":firebase.firestore.FieldValue.serverTimestamp()
+                        });
+                        
+
+
+                    });
+                }
+            } 
+            else {
+                console.log("No such document!");
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
     }
+
+
+
+    
     return (
         <tr>
             <td>{index + 1}</td>
