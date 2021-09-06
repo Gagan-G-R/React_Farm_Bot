@@ -1,7 +1,23 @@
 .table__tableData{
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
     border: 10px solid rgb(182,114,51);
+}
+.invert{
+    display:flex;
+    flex-direction: column-reverse;
+}
+.notinvert{
+    display: flex;
+    flex-direction: column;
+}
+
+.img:nth-child(odd){
+    background-color: red;
+    border: red;
+}
+.img:nth-child(even){
+    background-color: blue;
+    border: blue;
 }
 .heading{
     color:whitesmoke;

@@ -8,15 +8,24 @@ import { db } from '../../firebase'
 
 const Bed = () => {
     const { type } = useParams()
-    const [snapshot, setSnapshot]=useState([])
+    const [snapshot_01, setSnapshot_01]=useState([])
+    const [snapshot_02, setSnapshot_02]=useState([])
     const history = useHistory()
 
     useEffect(()=>{
-        db.collection('farmbed').onSnapshot((snapshot)=>setSnapshot(snapshot.docs.map((doc)=>({
+        db.collection('farmbed_01').onSnapshot((snapshot_01)=>setSnapshot_01(snapshot_01.docs.map((doc)=>({
             id:doc.id,
             data:doc.data()
         }))))
     }, [type])
+
+    useEffect(()=>{
+        db.collection('farmbed_02').onSnapshot((snapshot_02)=>setSnapshot_02(snapshot_02.docs.map((doc)=>({
+            id:doc.id,
+            data:doc.data()
+        }))))
+    }, [type])
+
 
     const handleBackClick = (e) => {
         e.preventDefault()
@@ -32,12 +41,31 @@ const Bed = () => {
             <p class="heading">Here is the farm bed</p>
 
             <div className="table__tableData">
+                    <div className="notinvert">
+                        {
+                            snapshot_01.map((plant, index)=>(
+                                <img src={plant.data.link} width="200" height="200" alt="" ></img>
+                            ))
+                        }
+                    </div>
+                    <div className="invert">
                     {
-                        snapshot.map((plant, index)=>(
+                        snapshot_02.map((plant, index)=>(
                             <img src={plant.data.link} width="200" height="200" alt="" ></img>
                         ))
                     }
+                    </div>
+                    
             </div>
+
+            {/* <div className="table__tableData">  
+                    {
+                        snapshot_02.map((plant, index)=>(
+                            <img src={plant.data.link} width="200" height="200" alt="" ></img>
+                        ))
+                    }
+            </div> */}
+
 
             <div className="table__buttonsContainer">
 
