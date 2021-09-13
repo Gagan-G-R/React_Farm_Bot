@@ -32,9 +32,65 @@ const Bed = () => {
         history.push('/')
     }
     const handleDetectClick = (e) => {
-        e.preventDefault()
-        var docRef = db.collection("Status").doc("Detect");
-        docRef.update({state: true});
+
+        let proceed = prompt("Are you sure u want to restart ?\ntype 'y' for Yes and 'n' for No");
+        
+        if (proceed==="y"){
+            e.preventDefault()
+            var docRef = db.collection("Status").doc("Detect");
+            docRef.get().then((doc) => {
+                if (doc.exists) {
+                    if(doc.data().state){
+                        
+                        //bot is already in test() rutine
+
+                        alert("Bot is doing the farmbed Wait     !!!!!!");
+                    }
+                    else{
+                        
+                        //now to bot is goin to the test() rutine
+     
+
+                        // setting the state to true 
+                        docRef.update({state: true});
+
+                        // deleting all the previous data 
+                        db.collection("farmbed_01").get().then(res => {
+                            res.forEach(element => {
+                                element.ref.delete();
+                            });
+                        });
+                        
+                        db.collection("farmbed_02").get().then(res => {
+                            res.forEach(element => {
+                                element.ref.delete();
+                            });
+                        });
+                    
+                        db.collection("weeds").get().then(res => {
+                            res.forEach(element => {
+                                element.ref.delete();
+                            });
+                        });
+
+                        db.collection("crops").get().then(res => {
+                            res.forEach(element => {
+                                element.ref.delete();
+                            });
+                        });
+
+                        db.collection("cmds").get().then(res => {
+                            res.forEach(element => {
+                                element.ref.delete();
+                            });
+                        });
+
+                        alert("Bot has started the rutine of creating the farmbed  !!!!!!");
+                        
+                    }
+                }
+           });
+        }
     }
     return (
         <div className="table">
@@ -58,13 +114,6 @@ const Bed = () => {
                     
             </div>
 
-            {/* <div className="table__tableData">  
-                    {
-                        snapshot_02.map((plant, index)=>(
-                            <img src={plant.data.link} width="200" height="200" alt="" ></img>
-                        ))
-                    }
-            </div> */}
 
 
             <div className="table__buttonsContainer">

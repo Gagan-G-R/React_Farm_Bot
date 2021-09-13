@@ -10,20 +10,19 @@ const TableRow = ({plant,index,type}) => {
         db.collection(type).doc(plant.id).delete()
     }
 
-
     const handleWatClick = (e) => {
         e.preventDefault()
-        console.log("happy");
+        // console.log("happy");
         var docRef = db.collection("Status").doc("Detect");
         docRef.get().then((doc) => {
             if (doc.exists) {
                 if(!doc.data().state){
 
-                    var str1,str2="WT05X00Y00Z00Q00";
+                    var str1="",str2="WP05X00Y00Z00Q00";
                     db.collection(type).doc(plant.id).get().then((doc)=>{
                         console.log(doc.data())
-                        var x = String(doc.data().x);
-                        var y = String(doc.data().y);
+                        var x = String(doc.data().gno).substring(0,2);
+                        var y = String(doc.data().gno).substring(2,4);
                         if (x.length===1){
                             x="0"+x;
                         };
@@ -44,9 +43,12 @@ const TableRow = ({plant,index,type}) => {
                             "time":firebase.firestore.FieldValue.serverTimestamp()
                         });
                         
-
+                        alert("Your command is pushed to Bot !!!")
 
                     });
+                }
+                else{
+                    alert("The Bot is still doing Farmbed wait !!!!!!!!")
                 }
             } 
             else {
@@ -57,6 +59,7 @@ const TableRow = ({plant,index,type}) => {
         });
     }
 
+
     const handleMstClick = (e) => {
         e.preventDefault()
         console.log("happy");
@@ -65,11 +68,11 @@ const TableRow = ({plant,index,type}) => {
             if (doc.exists) {
                 if(!doc.data().state){
 
-                    var str1,str2="MS05X00Y00Z00Q00";
+                    var str1="",str2="SM05X00Y00Z00Q00";
                     db.collection(type).doc(plant.id).get().then((doc)=>{
                         console.log(doc.data())
-                        var x = String(doc.data().x);
-                        var y = String(doc.data().y);
+                        var x = String(doc.data().gno).substring(0,2);
+                        var y = String(doc.data().gno).substring(2,4);
                         if (x.length===1){
                             x="0"+x;
                         };
@@ -90,9 +93,61 @@ const TableRow = ({plant,index,type}) => {
                             "time":firebase.firestore.FieldValue.serverTimestamp()
                         });
                         
-
+                        alert("Your command is pushed to Bot !!!")
 
                     });
+                }
+                else{
+                    alert("The Bot is still doing Farmbed wait !!!!!!!!")
+                }
+            } 
+            else {
+                console.log("No such document!");
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+    }
+
+    const handleWedClick = (e) => {
+        e.preventDefault()
+        console.log("happy");
+        var docRef = db.collection("Status").doc("Detect");
+        docRef.get().then((doc) => {
+            if (doc.exists) {
+                if(!doc.data().state){
+
+                    var str1="",str2="XW05X00Y00Z00Q00";
+                    db.collection(type).doc(plant.id).get().then((doc)=>{
+                        console.log(doc.data())
+                        var x = String(doc.data().gno).substring(0,2);
+                        var y = String(doc.data().gno).substring(2,4);
+                        if (x.length===1){
+                            x="0"+x;
+                        };
+                        if (y.lenght===1){
+                            y="0"+y;
+                        };
+                        str1="MV00X"+x+"Y"+y+"Z00Q00";
+                        console.log(str1);
+
+
+                        // var time = firebase.firestore.FieldValue.serverTimestamp();
+                        // db.collection("cmds").doc(time).add({"cmd":String(str1)});
+                        // time = firebase.firestore.FieldValue.serverTimestamp();
+                        // db.collection("cmds").doc(time).add({"cmd":String(str2)});
+                        db.collection("cmds").add({
+                            "cmd1":String(str1),
+                            "cmd2":String(str2),
+                            "time":firebase.firestore.FieldValue.serverTimestamp()
+                        });
+                        
+                        alert("Your command is pushed to Bot !!!")
+
+                    });
+                }
+                else{
+                    alert("The Bot is still doing Farmbed wait !!!!!!!!")
                 }
             } 
             else {
@@ -119,7 +174,7 @@ const TableRow = ({plant,index,type}) => {
                 <div class="class_border_del"><Button className="del_but" onClick={handleDelClick}>Delete</Button></div>
                 <div class="class_border_wat"><Button className="del_but" onClick={handleWatClick}>Water</Button></div>
                 <div class="class_border_mst"><Button className="del_but" onClick={handleMstClick}>Moisture</Button></div>
-                <div class="class_border_wed"><Button className="del_but" >Weed</Button></div>
+                <div class="class_border_wed"><Button className="del_but" onClick={handleWedClick}>Weed</Button></div>
 
             </td>
         </tr>
